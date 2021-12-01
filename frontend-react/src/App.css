@@ -1,0 +1,111 @@
+@import "PercentColors.css";
+
+.custom-not-a-button:focus:not(:active) {
+  box-shadow: none;
+}
+
+.custom-refresh-loadspinner {
+  border: none;
+  border-radius: 100000000px;
+  height: 13rem;
+  width: 13rem;
+  font-size: 4rem;
+  position: absolute;
+  left: 50%;
+  top: 16.6rem;
+  transform: translateX(-50%);
+}
+
+.custom-table-loadspinner {
+  background-color: hsla(0, 0%, 0%, 0%);
+  border: none;
+  padding: 0;
+}
+
+.custom-modal-card-height {
+  /* to leave room for asset symbol search. */
+  min-height: 500px;
+}
+
+.custom-search-container {
+  max-width: 600px;
+}
+
+.custom-search-results {
+  max-height: 90px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.custom-ellipse-btn {
+  border: none;
+  background-color: rgba(245, 245, 245, 0);
+}
+
+.custom-ellipse-btn:hover {
+  background-color: rgba(245, 245, 245, 0);
+  color: hsl(348, 100%, 61%);
+}
+
+.custom-dropdown {
+  max-width: 5rem;
+  min-width: 5rem;
+}
+
+.custom-info-selector {
+  cursor: pointer;
+}
+
+.custom-info-selector:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.custom-box {
+  /* limits max height of asset info graphs. Fix for strange flexbox behaviour where right-most graph in flex-direction: row is larger when not wrapped */
+  max-height: 520px;
+}
+
+.custom-financial-chart-container,
+.custom-price-chart-container {
+  --width: 500px;
+  width: var(--width);
+  height: calc(var(--width) / 1.5);
+}
+
+.custom-chart-title {
+  background-color: hsla(0, 0%, 0%, 0%);
+  border: none;
+}
+
+.custom-no-hover {
+  cursor: default;
+  outline: none;
+}
+
+.custom-table-header {
+  border-bottom: 2px solid rgb(219, 219, 219);
+}
+
+@media screen and (max-width: 767px) {
+  .custom-financial-chart-container,
+  .custom-price-chart-container {
+    max-width: 300px;
+    height: 280px;
+  }
+
+  .custom-box {
+    max-width: 425px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .custom-refresh-prices-margin-mobile {
+    margin-top: -2rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .custom-refresh-prices-margin-mobile {
+    margin-top: -4rem;
+  }
+}

@@ -1,0 +1,95 @@
+/* COLORS FOR PROGRESS BARS */
+/* INDEX 0 */
+.custom-progress-0::-moz-progress-bar {
+  /* For Firefox */
+  background: rgb(255, 99, 132);
+}
+
+.custom-progress-0::-webkit-progress-value {
+  /* For Chrome or Safari */
+  background: rgb(255, 99, 132);
+  /* background: rgba(255, 99, 132, 0.5); */
+}
+
+.custom-progress-0 {
+  /* For IE10 */
+  background: rgb(255, 99, 132);
+}
+
+/* INDEX 1 */
+.custom-progress-1::-moz-progress-bar {
+  background: rgb(255, 159, 64);
+}
+
+.custom-progress-1::-webkit-progress-value {
+  background: rgb(255, 159, 64);
+}
+
+.custom-progress-1 {
+  background: rgb(255, 159, 64);
+}
+
+/* INDEX 2 */
+.custom-progress-2::-moz-progress-bar {
+  background: rgb(255, 205, 86);
+}
+
+.custom-progress-2::-webkit-progress-value {
+  background: rgb(255, 205, 86);
+}
+
+.custom-progress-2 {
+  background: rgb(255, 205, 86);
+}
+
+/* INDEX 3 */
+.custom-progress-3::-moz-progress-bar {
+  background: rgb(75, 192, 192);
+}
+
+.custom-progress-3::-webkit-progress-value {
+  background: rgb(75, 192, 192);
+}
+
+.custom-progress-3 {
+  background: rgb(75, 192, 192);
+}
+
+/* INDEX 4 */
+.custom-progress-4::-moz-progress-bar {
+  background: rgb(54, 162, 235);
+}
+
+.custom-progress-4::-webkit-progress-value {
+  background: rgb(54, 162, 235);
+}
+
+.custom-progress-4 {
+  background: rgb(54, 162, 235);
+}
+
+/* INDEX 5 */
+.custom-progress-5::-moz-progress-bar {
+  background: rgb(153, 102, 255);
+}
+
+.custom-progress-5::-webkit-progress-value {
+  background: rgb(153, 102, 255);
+}
+
+.custom-progress-5 {
+  background: rgb(153, 102, 255);
+}
+
+/* INDEX 6 */
+.custom-progress-6::-moz-progress-bar {
+  background: rgb(201, 203, 207);
+}
+
+.custom-progress-6::-webkit-progress-value {
+  background: rgb(201, 203, 207);
+}
+
+.custom-progress-6 {
+  background: rgb(201, 203, 207);
+}
