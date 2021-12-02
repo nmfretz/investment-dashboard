@@ -24,6 +24,7 @@ const HistoricalPriceGraph = ({ asset, minDate, setIsLoadingPriceGraph }) => {
       // fetchedData = { dates: ["2019-01-01", "2020-01-01"], prices: [5, 10] };
       fetchedData = await getHistoricalCryptoPrices(asset.symbol);
       console.log(fetchedData);
+      setIsLoadingPriceGraph(false);
     }
     setHistoricalPrices(fetchedData);
   }, []);

@@ -19,14 +19,14 @@ Front end currently deployed on netlify at https://investment-dashboard.netlify.
 
 - React Framework for frontend build
 - :bar_chart: [Chart.js](https://www.chartjs.org/) library used for graphing portfolio breakdown, company financials, and asset price history
-  - Hover over doughnut chart to view individual percentages of assets
+  - Doughnut chart of portfolio holdings
   - View all company financial charts available through HyperCharts (e.g., revenue segments, cash flow, etc...)
   - View historical stock and crypto prices by time range
 - :currency_exchange: [money.js](https://openexchangerates.github.io/money.js/) library used for currency conversion (see backend below for exchange rate API)
 - :telescope: Search functionality for stocks and crypto assets
 - :brain: Financial and price data cached to limit API calls
 - :cow: [Bulma.io](https://bulma.io/) CSS framework
-- :clipboard: Asset portfolio persists in local storage. Database ( MongoDB) currently in development.
+- :clipboard: Asset portfolio persists in local storage. Database ( MongoDB) currently in development to make this application full stack 🥞.
 
 #### Backend
 

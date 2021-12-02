@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext, useRef } from "react";
+import useHeroku from "react-use-heroku";
 import { v4 as uuidv4 } from "uuid";
 import "bulma/css/bulma.css";
 import "./App.css";
@@ -9,15 +10,17 @@ import CurrencySelector from "./components/CurrencySelector";
 import Instructions from "./components/Instructions";
 import AddAssetModal from "./components/AddAssetModal";
 import AddAssetButton from "./components/AddAssetButton";
-import DeleteAssetModal from "./components/DeleteAssetModal";
 import updatePricesValuesPercents, { convertCurrency } from "./fetch-requests/updatePricesValuesPercents";
 import RefreshLoadSpinner from "./components/RefreshLoadSpinner";
 import { LOCAL_STORAGE_ASSETS, LOCAL_STORAGE_CURRENCY } from "./utils/localStorageKeys";
 import RefreshPricesBtn from "./components/RefreshPricesBtn";
+import { HEROKU_WAKE_END_POINT } from "./fetch-requests/end-points";
 
 export const AssetContext = createContext();
 
 function App() {
+  const isHerokuLoading = useHeroku({ HEROKU_WAKE_END_POINT });
+
   const [assets, setAssets] = useState([]);
   const [userCurrency, setUserCurrency] = useState("CAD");
 
@@ -151,6 +154,8 @@ function App() {
     setAssets([...tempAssetArray]);
     setIsGraphAndTableLoading(false);
   }
+
+  if (isHerokuLoading) return <div>Heroku is sleeping, hang tight...</div>;
 
   return (
     <AssetContext.Provider

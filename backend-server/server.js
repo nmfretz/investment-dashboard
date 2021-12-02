@@ -5,6 +5,8 @@ require("dotenv").config();
 const app = express();
 app.use(cors());
 
+app.get("/wake-up", (_, res) => res.json({ status: "Awake" }));
+
 const searchRouter = require("./routes/search");
 app.use("/search", searchRouter); // mount router to /search
 
