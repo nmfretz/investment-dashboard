@@ -39,13 +39,25 @@ const ALPHA_VANTAGE_API_KEY = process.env.ALPHA_VANTAGE_API_KEY;
 router.get("/stock/historical/:symbol", async (req, res) => {
   try {
     const symbol = req.params.symbol;
+
+    // DAILY ADJUSTED END-POINT IS NOW PREMIUM AND MUST BE PAID FOR
+    // const response = await axios.get(
+    //   `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&outputsize=full&apikey=${ALPHA_VANTAGE_API_KEY}`
+    // );
+
+    // USING WEEKLY ADJUSTED END-POINT
     const response = await axios.get(
-      `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&outputsize=full&apikey=${ALPHA_VANTAGE_API_KEY}`
+      `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&outputsize=full&apikey=${ALPHA_VANTAGE_API_KEY}`
     );
     const { data } = await response;
 
-    const dates = Object.keys(data["Time Series (Daily)"]).reverse();
-    const prices = Object.values(data["Time Series (Daily)"])
+    // const dates = Object.keys(data["Time Series (Daily)"]).reverse();
+    // const prices = Object.values(data["Time Series (Daily)"])
+    //   .map((element) => element["5. adjusted close"])
+    //   .reverse();
+
+    const dates = Object.keys(data["Weekly Adjusted Time Series"]).reverse();
+    const prices = Object.values(data["Weekly Adjusted Time Series"])
       .map((element) => element["5. adjusted close"])
       .reverse();
 
