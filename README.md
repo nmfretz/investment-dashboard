@@ -108,8 +108,6 @@ npm run dev
 
 Back end server currently deployed on heroku at https://financial-investment-dashboard.herokuapp.com/
 
-Build the frontend for production with `npm run build`. Deploy the `build` folder.
-
 - Deployed from github subdirectory server using https://github.com/timanovsky/subdir-heroku-buildpack.git
 
   - add above github url as first heroku buildpack
@@ -118,6 +116,8 @@ Build the frontend for production with `npm run build`. Deploy the `build` folde
 ### Frontend
 
 Front end currently deployed on netlify at https://investment-dashboard.netlify.app/
+
+Build the frontend for production with `npm run build`. Deploy the `build` folder.
 
 Change `const SERVER_URL` in `frontend-react/build/src/fetch-requests/end-points.js` to url of your server
 
