@@ -27,7 +27,9 @@ const NOMICS_API_KEY = process.env.NOMICS_API_KEY;
 router.get("/crypto/current/:symbol", nomicsApiSlowDown, async (req, res) => {
   try {
     const symbol = req.params.symbol;
-    const response = await axios.get(`https://api.nomics.com/v1/currencies/ticker?key=${NOMICS_API_KEY}&ids=${symbol}`); //change back to symbol
+    const response = await axios.get(
+      `https://api.nomics.com/v1/currencies/ticker?key=${NOMICS_API_KEY}&ids=${symbol}&per-page=1`
+    );
     const { data } = await response;
     res.json(data);
   } catch (error) {
@@ -45,16 +47,17 @@ router.get("/stock/historical/:symbol", async (req, res) => {
     //   `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&outputsize=full&apikey=${ALPHA_VANTAGE_API_KEY}`
     // );
 
-    // USING WEEKLY ADJUSTED END-POINT
-    const response = await axios.get(
-      `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&outputsize=full&apikey=${ALPHA_VANTAGE_API_KEY}`
-    );
-    const { data } = await response;
-
     // const dates = Object.keys(data["Time Series (Daily)"]).reverse();
     // const prices = Object.values(data["Time Series (Daily)"])
     //   .map((element) => element["5. adjusted close"])
     //   .reverse();
+
+    // USING WEEKLY ADJUSTED END-POINT
+    const response = await axios.get(
+      `https://www.alphavantage.co/query?function=TIME_SERIES_WEEKLY_ADJUSTED&symbol=${symbol}&outputsize=full&apikey=${ALPHA_VANTAGE_API_KEY}`
+    );
+
+    const { data } = await response;
 
     const dates = Object.keys(data["Weekly Adjusted Time Series"]).reverse();
     const prices = Object.values(data["Weekly Adjusted Time Series"])
