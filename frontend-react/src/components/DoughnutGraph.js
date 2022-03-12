@@ -13,7 +13,7 @@ const DoughnutGraph = ({ assets, userCurrency }) => {
     datasets: [
       {
         label: "Dataset 1",
-        data: assets.length > 0 ? assets.map((asset) => asset.userCurrencyValue) : [0.1],
+        data: assets.length > 0 ? assets.map((asset) => asset.userCurrencyValue) : [0.01],
         backgroundColor: assets.length > 0 ? Object.values(DATA_COLORS) : ["rgb(225, 225, 225)"],
         // consider smaller border thickness
         hoverOffset: 20,
@@ -99,6 +99,8 @@ const DoughnutGraph = ({ assets, userCurrency }) => {
             return context[0].label;
           },
           label: function (context) {
+            if (context.label === "No Assets") return;
+
             return `${Intl.NumberFormat("en-CA", {
               style: "currency",
               currency: userCurrency,
@@ -106,7 +108,9 @@ const DoughnutGraph = ({ assets, userCurrency }) => {
             }).format(context.dataset.data[context.dataIndex])}`;
           },
           afterLabel: function (context) {
-            return `${((context.dataset.data[context.dataIndex] / sumOfAllAssetValues) * 100).toFixed(2)}%`;
+            if (context.label === "No Assets") return;
+
+            return `${((context.dataset.data[context.dataIndex] / sumOfAllAssetValues) * 100).toFixed(2)}%` || "";
           },
         },
       },

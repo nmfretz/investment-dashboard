@@ -155,6 +155,7 @@ function App() {
     setIsGraphAndTableLoading(false);
   }
 
+  // Create a component for this with a load spinner
   if (isHerokuLoading) return <div>Heroku is sleeping, hang tight...</div>;
 
   return (
