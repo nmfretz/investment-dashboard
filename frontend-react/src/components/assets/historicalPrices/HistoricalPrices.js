@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { format, sub } from "date-fns";
 
 import HistoricalPriceGraph from "./HistoricalPriceGraph";
-import TimeSelectorBreadCrumb from "./TimeSelectorBreadCrumb.js";
+import TimeSelectorBreadCrumb from "../TimeSelectorBreadCrumb.js";
 
 const HistoricalPrices = ({ asset }) => {
   const [minDate, setMinDate] = useState();

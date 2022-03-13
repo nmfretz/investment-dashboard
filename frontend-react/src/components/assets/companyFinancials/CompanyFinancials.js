@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import TimeSelectorBreadCrumb from "./TimeSelectorBreadCrumb.js";
-import CompanyFinancialsGraph from "./CompanyFinancialsGraph.js";
-import FinancialsDropdownItems from "./FinancialsDropdownItems.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+
+import TimeSelectorBreadCrumb from "../TimeSelectorBreadCrumb.js";
+import CompanyFinancialsGraph from "./CompanyFinancialsGraph.js";
+import FinancialsDropdownItems from "./FinancialsDropdownItems.js";
 
 const CompanyFinancials = ({ asset }) => {
   const [financialsTimeSelectionCrumbs, setFinancialsTimeSelectionCrumbs] = useState(["1Y", "2Y", "5Y", "10Y", "All"]);

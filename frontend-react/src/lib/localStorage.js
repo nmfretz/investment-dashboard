@@ -7,3 +7,5 @@ export const LOCAL_STORAGE_EXCHANGE_RATE_CACHE = `${LOCAL_STORAGE_PREFIX}.exchan
 export const LS_HISTORICAL_STOCK_PRICE_CACHE = `${LOCAL_STORAGE_PREFIX}.historical-stock-price-cache`;
 export const LS_HISTORICAL_CRYPTO_PRICE_CACHE = `${LOCAL_STORAGE_PREFIX}.historical-crypto-price-cache`;
 export const LS_COMPANY_FINANCIALS_CACHE = `${LOCAL_STORAGE_PREFIX}.company-financials-cache`;
+
+// TODO: move localStorage functions here

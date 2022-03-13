@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Bar, Line } from "react-chartjs-2";
-import { DATA_COLORS, DATA_COLORS_TRANSPARENT } from "../utils/graphUtils";
-import getCompanyFinancials from "../fetch-requests/getCompanyFinancials";
+
+import { DATA_COLORS, DATA_COLORS_TRANSPARENT } from "../../../lib/graphUtils";
+import getCompanyFinancials from "../../../lib/getCompanyFinancials";
 
 const CompanyFinancialsGraph = (props) => {
   const { asset, selectedChart, years, setChartDropdownItems, setIsLoadingFinancialsGraph, setChartTitle } = props;

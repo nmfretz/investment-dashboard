@@ -1,6 +1,6 @@
 // TODO - add try catch for error handling
 import { SERVER_URL, HISTORICAL_CRYPTO_PRICE_END_POINT } from "./end-points";
-import { LS_HISTORICAL_CRYPTO_PRICE_CACHE } from "../utils/localStorageKeys";
+import { LS_HISTORICAL_CRYPTO_PRICE_CACHE } from "./localStorage";
 
 const MINUTES_TO_MILLISECONDS = 60000; // consider placing these constants in their own js file
 const CACHE_TIMEOUT = 60 * MINUTES_TO_MILLISECONDS; // every 60 minutes. Could do longer since we are just looking daily?

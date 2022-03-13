@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+
 import AssetInfo from "./AssetInfo";
-import RefreshLoadSpinner from "./RefreshLoadSpinner";
+import RefreshLoadSpinner from "../RefreshLoadSpinner";
 import DeleteAssetModal from "./DeleteAssetModal";
-import numberFormatter from "../utils/numberFormatter";
+import numberFormatter from "../../lib/numberFormatter";
 
 const Assets = (props) => {
   const { assets, userCurrency, deleteAsset, handleEditAsset, isGraphAndTableLoading } = props;

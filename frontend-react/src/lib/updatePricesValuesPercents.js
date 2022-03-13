@@ -9,7 +9,7 @@ import {
   LOCAL_STORAGE_STOCK_PRICE_CACHE,
   LOCAL_STORAGE_CRYPTO_PRICE_CACHE,
   LOCAL_STORAGE_EXCHANGE_RATE_CACHE,
-} from "../utils/localStorageKeys";
+} from "./localStorage";
 
 var fx = require("money"); // money-js (http://openexchangerates.github.io/money.js/)
 

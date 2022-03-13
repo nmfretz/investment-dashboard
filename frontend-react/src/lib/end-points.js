@@ -1,5 +1,5 @@
-// export const SERVER_URL = "http://localhost:3000"; // Development
-export const SERVER_URL = "https://financial-investment-dashboard.herokuapp.com"; // Deployment
+export const SERVER_URL = "http://localhost:3000"; // Development
+// export const SERVER_URL = "https://financial-investment-dashboard.herokuapp.com"; // Deployment
 export const HEROKU_WAKE_END_POINT = "https://financial-investment-dashboard.herokuapp.com/wake-up"; // Wake up heroku server using react-use-heroku
 export const STOCK_SEARCH_END_POINT = "/search/stocks";
 export const CRYPTO_SEARCH_END_POINT = "/search/crypto";

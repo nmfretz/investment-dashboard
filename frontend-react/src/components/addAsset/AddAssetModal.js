@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from "react";
-import { AssetContext } from "../App";
+import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown, faSearch } from "@fortawesome/free-solid-svg-icons";
-import { searchAvailableStocks, searchAvailableCrypto } from "../fetch-requests/symbol-search";
+
+import { AssetContext } from "../../App";
+import { searchAvailableStocks, searchAvailableCrypto } from "../../lib/symbol-search";
 import SearchResult from "./SearchResult";
-import { v4 as uuidv4 } from "uuid";
 
 const AddAssetModal = (props) => {
   const { isAddAssetModalOpen, setIsAddAssetModalOpen, handleAddAsset, setIsEdit, setAssetToEditId } = props;

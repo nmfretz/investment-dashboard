@@ -1,5 +1,5 @@
-import CompanyFinancials from "./CompanyFinancials";
-import HistoricalPrices from "./HistoricalPrices";
+import CompanyFinancials from "./companyFinancials/CompanyFinancials";
+import HistoricalPrices from "./historicalPrices/HistoricalPrices";
 
 const AssetInfo = ({ asset }) => {
   return (

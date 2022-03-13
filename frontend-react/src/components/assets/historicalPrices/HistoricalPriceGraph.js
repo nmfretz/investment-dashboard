@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react";
-import { Line } from "react-chartjs-2";
-import { DATA_COLORS } from "../utils/graphUtils";
-import { getHistoricalStockPrices, findNearestStartDate } from "../fetch-requests/getHistoricalStockPrices";
-import getHistoricalCryptoPrices from "../fetch-requests/getHistoricalCryptoPrices";
 import "chartjs-adapter-date-fns";
+import { Line } from "react-chartjs-2";
+
+import { DATA_COLORS } from "../../../lib/graphUtils";
+import { getHistoricalStockPrices, findNearestStartDate } from "../../../lib/getHistoricalStockPrices";
+import getHistoricalCryptoPrices from "../../../lib/getHistoricalCryptoPrices";
 
 const HistoricalPriceGraph = ({ asset, minDate, setIsLoadingPriceGraph }) => {
   const [historicalPrices, setHistoricalPrices] = useState({ dates: [], prices: [] });

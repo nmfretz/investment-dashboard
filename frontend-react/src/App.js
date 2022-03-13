@@ -3,18 +3,18 @@ import useHeroku from "react-use-heroku";
 import { v4 as uuidv4 } from "uuid";
 import "bulma/css/bulma.css";
 import "./App.css";
-import DoughnutGraph from "./components/DoughnutGraph";
-import Navbar from "./components/Navbar";
-import TableOfAssets from "./components/TableOfAssets";
+import DoughnutGraph from "./components/doughnut/DoughnutGraph";
+import Navbar from "./components/navbar/Navbar";
+import TableOfAssets from "./components/assets/TableOfAssets";
 import CurrencySelector from "./components/CurrencySelector";
 import Instructions from "./components/Instructions";
-import AddAssetModal from "./components/AddAssetModal";
-import AddAssetButton from "./components/AddAssetButton";
-import updatePricesValuesPercents, { convertCurrency } from "./fetch-requests/updatePricesValuesPercents";
+import AddAssetModal from "./components/addAsset/AddAssetModal";
+import AddAssetButton from "./components/addAsset/AddAssetButton";
+import updatePricesValuesPercents, { convertCurrency } from "./lib/updatePricesValuesPercents";
 import RefreshLoadSpinner from "./components/RefreshLoadSpinner";
-import { LOCAL_STORAGE_ASSETS, LOCAL_STORAGE_CURRENCY } from "./utils/localStorageKeys";
+import { LOCAL_STORAGE_ASSETS, LOCAL_STORAGE_CURRENCY } from "./lib/localStorage";
 import RefreshPricesBtn from "./components/RefreshPricesBtn";
-import { HEROKU_WAKE_END_POINT } from "./fetch-requests/end-points";
+import { HEROKU_WAKE_END_POINT } from "./lib/end-points";
 
 export const AssetContext = createContext();
 

@@ -1,5 +1,5 @@
 import { SERVER_URL, COMPANY_FINANCIALS_END_POINT } from "./end-points";
-import { LS_COMPANY_FINANCIALS_CACHE } from "../utils/localStorageKeys";
+import { LS_COMPANY_FINANCIALS_CACHE } from "./localStorage";
 
 const MINUTES_TO_MILLISECONDS = 60000; // consider placing these constants in their own js file
 const CACHE_TIMEOUT = 60 * MINUTES_TO_MILLISECONDS; // every 60 minutes. Could do longer since we are just looking daily?

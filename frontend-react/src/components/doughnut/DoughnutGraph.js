@@ -1,5 +1,6 @@
 import { Doughnut } from "react-chartjs-2";
-import { DATA_COLORS } from "../utils/graphUtils";
+
+import { DATA_COLORS } from "../../lib/graphUtils";
 
 const DoughnutGraph = ({ assets, userCurrency }) => {
   const sumOfAllAssetValues = assets.reduce((total, asset) => {
