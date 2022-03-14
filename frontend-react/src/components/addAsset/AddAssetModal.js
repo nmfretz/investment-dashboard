@@ -38,7 +38,7 @@ const AddAssetModal = (props) => {
     if (!isSymbolSelectorOpen) return;
 
     const searchInputEl = document.querySelector("[data-search-input]");
-    console.log(searchInputEl);
+    // console.log(searchInputEl);
     searchInputEl.focus();
   }, [isSymbolSelectorOpen]);
 
@@ -55,7 +55,7 @@ const AddAssetModal = (props) => {
 
   // TODO - revisit this useEffect
   useEffect(async () => {
-    console.log("symbol search useEffect run");
+    // console.log("symbol search useEffect run");
     if (symbolSearch.length === 0) return setSearchResults([]);
 
     let tempSearchResults;
@@ -96,7 +96,7 @@ const AddAssetModal = (props) => {
       setAssetToEditId(false);
       clearForm();
     } else {
-      return console.log("form is not valid"); // do I still need to do anything here?
+      // return console.log("form is not valid");
     }
   }
 

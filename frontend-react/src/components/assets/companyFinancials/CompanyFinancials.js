@@ -32,7 +32,7 @@ const CompanyFinancials = ({ asset }) => {
   }, [selectedFinancialsCrumbIndex]);
 
   function handleChartChange(selectedDropdownItem) {
-    console.log(selectedDropdownItem);
+    // console.log(selectedDropdownItem);
     setSelectedChart(selectedDropdownItem);
     setIsChartSelectorOpen(false);
   }

@@ -17,14 +17,14 @@ const HistoricalPriceGraph = ({ asset, minDate, setIsLoadingPriceGraph }) => {
   useEffect(async () => {
     let fetchedData;
     if (asset.type === "Stock") {
-      console.log("fetching historical stock price data");
+      // console.log("fetching historical stock price data");
       fetchedData = await getHistoricalStockPrices(asset.symbol);
       setIsLoadingPriceGraph(false);
     } else {
-      console.log("fetching historical crypto price data");
+      // console.log("fetching historical crypto price data");
       // fetchedData = { dates: ["2019-01-01", "2020-01-01"], prices: [5, 10] };
       fetchedData = await getHistoricalCryptoPrices(asset.symbol);
-      console.log(fetchedData);
+      // console.log(fetchedData);
       setIsLoadingPriceGraph(false);
     }
     setHistoricalPrices(fetchedData);
@@ -47,10 +47,10 @@ const HistoricalPriceGraph = ({ asset, minDate, setIsLoadingPriceGraph }) => {
       const endPrice = Number(historicalPrices.prices[historicalPrices.prices.length - 1]);
       if (startPrice > endPrice) {
         setLineColor(DATA_COLORS.red);
-        console.log("set line to red");
+        // console.log("set line to red");
       } else {
         setLineColor(DATA_COLORS.green);
-        console.log("set line to green");
+        // console.log("set line to green");
       }
     } else {
       isMountedForMinX.current = false;

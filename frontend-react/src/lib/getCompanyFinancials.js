@@ -11,7 +11,7 @@ export default async function getCompanyFinancials(symbol) {
   if (!companyFinancialsCache[symbol] || companyFinancialsCache[symbol].currentTime + CACHE_TIMEOUT < Date.now()) {
     //call api
     try {
-      console.log("hypercharts api called");
+      // console.log("hypercharts api called");
       const response = await fetch(`${SERVER_URL}${COMPANY_FINANCIALS_END_POINT}/${symbol}`);
       graphData = await response.json();
     } catch (error) {
@@ -19,11 +19,11 @@ export default async function getCompanyFinancials(symbol) {
     }
   } else {
     // use cache
-    console.log("cache used for company financials");
+    // console.log("cache used for company financials");
     graphData = companyFinancialsCache[symbol].graphData;
   }
 
-  console.log(graphData);
+  // console.log(graphData);
   const currentTime = Date.now();
   companyFinancialsCache[symbol] = { graphData, currentTime };
   // could filter cache here to only include symbols that are in assets.

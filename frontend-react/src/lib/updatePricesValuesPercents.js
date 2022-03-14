@@ -53,14 +53,14 @@ async function getCurrentStockPrice(symbol) {
   let latestPrice;
 
   if (!priceCacheStocks[symbol] || priceCacheStocks[symbol].currentTime + CACHE_TIMEOUT < Date.now()) {
-    console.log(`calling for new stock price data for ${symbol}`);
+    // console.log(`calling for new stock price data for ${symbol}`);
     const response = await fetch(`${SERVER_URL}${CURRENT_STOCK_PRICE_END_POINT}/${symbol}`);
     const json = await response.json();
     const data = json.chart.result[0];
     currency = data.meta.currency;
     latestPrice = data.meta.regularMarketPrice;
   } else {
-    console.log(`using cached stock price data for ${symbol}`);
+    // console.log(`using cached stock price data for ${symbol}`);
     currency = priceCacheStocks[symbol].currency;
     latestPrice = priceCacheStocks[symbol].latestPrice;
   }
@@ -77,12 +77,12 @@ async function getCurrentCryptoPrice(symbol) {
   let latestPrice;
 
   if (!priceCacheCrypto[symbol] || priceCacheCrypto[symbol].currentTime + CACHE_TIMEOUT < Date.now()) {
-    console.log(`calling for new crypto price data for ${symbol}`);
+    // console.log(`calling for new crypto price data for ${symbol}`);
     const response = await fetch(`${SERVER_URL}${CURRENT_CRYPTO_PRICE_END_POINT}/${symbol}`);
     const json = await response.json();
     latestPrice = json[0].price;
   } else {
-    console.log(`using cached crypto price data for ${symbol}`);
+    // console.log(`using cached crypto price data for ${symbol}`);
     // do I need currency here?
     latestPrice = priceCacheCrypto[symbol].latestPrice;
   }
@@ -117,7 +117,7 @@ async function getExchangeRate(fromCurrency, toCurrency) {
   const to = toCurrency.toUpperCase();
 
   if (from === to) {
-    console.log("no exchange rate needed");
+    // console.log("no exchange rate needed");
     exchangeRate = 1;
   } else {
     if (
@@ -125,14 +125,14 @@ async function getExchangeRate(fromCurrency, toCurrency) {
       exchangeRateCache[`${fromCurrency}${toCurrency}`].currentTime + CACHE_TIMEOUT < Date.now()
     ) {
       // call api
-      console.log(`calling api for ${fromCurrency}${toCurrency}`);
+      // console.log(`calling api for ${fromCurrency}${toCurrency}`);
       const response = await fetch(`${SERVER_URL}${CURRENCY_CONVERSION_END_POINT}/${from}${to}`);
       const json = await response.json();
       const data = json.chart.result[0];
       exchangeRate = data.meta.regularMarketPrice;
     } else {
       //use cache
-      console.log(`using exch cache for ${fromCurrency}${toCurrency}`);
+      // console.log(`using exch cache for ${fromCurrency}${toCurrency}`);
       exchangeRate = exchangeRateCache[`${fromCurrency}${toCurrency}`].exchangeRate;
     }
   }

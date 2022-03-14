@@ -15,7 +15,7 @@ const CompanyFinancialsGraph = (props) => {
 
   useEffect(async () => {
     const fetchedData = await getCompanyFinancials(asset.symbol);
-    console.log(fetchedData);
+    // console.log(fetchedData);
     setCompanyFinancials(fetchedData);
     setIsLoadingFinancialsGraph(false);
   }, []);
