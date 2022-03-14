@@ -1,4 +1,43 @@
+/* Bulma.io CSS framework used for the majority of the CSS. !important rules are used to override bulma styling*/
 @import "PercentColors.css";
+
+.custom-welcome-img {
+  width: 90%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.custom-img-border {
+  border-radius: 0.5em;
+}
+
+.custom-modal-background {
+  background-color: #eee;
+}
+
+.custom-start-portfolio-btn {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.custom-info-button {
+  cursor: pointer;
+  color: #ccc;
+}
+
+.custom-info-button:hover {
+  color: #aaa;
+}
+
+.custom-currency-selector:focus,
+.custom-currency-selector:active,
+.custom-refresh-prices:focus,
+.custom-refresh-prices:active {
+  border-color: #dbdbdb !important;
+  box-shadow: none !important;
+}
 
 .custom-not-a-button:focus:not(:active) {
   box-shadow: none;
@@ -33,8 +72,28 @@
 
 .custom-search-results {
   max-height: 90px;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow: hidden;
+  padding-left: 1.2em;
+}
+
+.custom-search-suggestion-item-button {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+
+  /* padding-left: 1em; */
+}
+
+.custom-search-suggestion-item-button:focus {
+  background-color: #ddd;
 }
 
 .custom-ellipse-btn {

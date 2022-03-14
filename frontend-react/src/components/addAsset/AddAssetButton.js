@@ -4,7 +4,7 @@ const AddAssetButton = (props) => {
     <>
       <section className="section is-small pt-0">
         <button
-          className="button is-medium is-fullwidth is-light mt-5 mb-5"
+          className="button is-medium is-fullwidth is-light mt-5 mb-5 is-size-6-mobile"
           onClick={() => setIsAddAssetModalOpen(!isAddAssetModalOpen)}
         >
           + Add Asset

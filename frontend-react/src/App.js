@@ -15,11 +15,14 @@ import RefreshLoadSpinner from "./components/RefreshLoadSpinner";
 import { LOCAL_STORAGE_ASSETS, LOCAL_STORAGE_CURRENCY } from "./lib/localStorage";
 import RefreshPricesBtn from "./components/RefreshPricesBtn";
 import { HEROKU_WAKE_END_POINT } from "./lib/end-points";
+import WelcomeModal from "./components/WelcomeModal";
 
 export const AssetContext = createContext();
 
 function App() {
   const isHerokuLoading = useHeroku({ HEROKU_WAKE_END_POINT });
+
+  const [isWelcomeModalOpen, setIsWelcomeModalOpen] = useState(false);
 
   const [assets, setAssets] = useState([]);
   const [userCurrency, setUserCurrency] = useState("CAD");
@@ -44,7 +47,6 @@ function App() {
 
     if (isEdit) {
       tempAssetArray = tempAssetArray.filter((asset) => asset.id !== assetToEditId); // remove edit asset from array in order to push edited version
-      console.log(`inside handleAddAsset with existing asset ${assetToEditId}`);
     }
 
     const newAsset = {
@@ -87,8 +89,16 @@ function App() {
 
   // try this for button
   useEffect(async () => {
+    // show welcome modal if user has never visited
+    const userHasViewedWelcomeMessage = localStorage.getItem("welcome-message-viewed");
+    if (userHasViewedWelcomeMessage === null) {
+      setTimeout(() => {
+        setIsWelcomeModalOpen(true);
+      }, 1000);
+      localStorage.setItem("welcome-message-viewed", true);
+    }
+
     // load assets and userCurrency from local storage if they exist
-    console.log("loading assets and userCurrency");
     let tempAssetArray = [];
     const jsonAssets = localStorage.getItem(LOCAL_STORAGE_ASSETS);
     // if (jsonAssets != null) setAssets(JSON.parse(jsonAssets));
@@ -99,7 +109,6 @@ function App() {
     const jsonUserCurrency = localStorage.getItem(LOCAL_STORAGE_CURRENCY);
     if (jsonUserCurrency != null) setUserCurrency(JSON.parse(jsonUserCurrency));
 
-    console.log("updating prices and values on page load");
     // let tempAssetArray = [...assets];
     tempAssetArray = await updatePricesValuesPercents(tempAssetArray, userCurrency);
     setAssets([...tempAssetArray]);
@@ -108,7 +117,6 @@ function App() {
 
   useEffect(() => {
     if (isMountedSetStorage.current) {
-      console.log("storing assets");
       localStorage.setItem(LOCAL_STORAGE_ASSETS, JSON.stringify(assets));
     } else {
       isMountedSetStorage.current = true;
@@ -118,7 +126,6 @@ function App() {
   useEffect(async () => {
     // all I should do here is make do Intl currency conversion
     if (isMountedCurrency.current) {
-      console.log("assets updated when user currency updated");
       localStorage.setItem(LOCAL_STORAGE_CURRENCY, JSON.stringify(userCurrency));
       let tempAssetArray = [...assets];
       setIsLoadingForCurrency(true);
@@ -142,7 +149,6 @@ function App() {
     if (isMountedHTMLClipped.current) {
       document.querySelector("html").classList.toggle("is-clipped");
     } else {
-      console.log("setting isMountedHTMLClipped to true");
       isMountedHTMLClipped.current = true;
     }
   }, [isAddAssetModalOpen]);
@@ -171,6 +177,7 @@ function App() {
     >
       <Navbar />
       <CurrencySelector
+        setIsWelcomeModalOpen={setIsWelcomeModalOpen}
         userCurrency={userCurrency}
         isLoadingForCurrency={isLoadingForCurrency}
         handleCurrencyChange={handleCurrencyChange}
@@ -179,7 +186,7 @@ function App() {
         <RefreshLoadSpinner className={"button is-loading custom-refresh-loadspinner"} text={""} />
       )}
       <DoughnutGraph assets={assets} userCurrency={userCurrency} />
-      <RefreshPricesBtn handleRefreshPrices={handleRefreshPrices} />
+      <RefreshPricesBtn handleRefreshPrices={handleRefreshPrices} isGraphAndTableLoading={isGraphAndTableLoading} />
       <Instructions />
       <TableOfAssets
         assets={assets}
@@ -196,6 +203,7 @@ function App() {
         setAssetToEditId={setAssetToEditId}
         handleAddAsset={handleAddAsset}
       />
+      <WelcomeModal isOpen={isWelcomeModalOpen} handleClose={() => setIsWelcomeModalOpen(false)} />
     </AssetContext.Provider>
   );
 }

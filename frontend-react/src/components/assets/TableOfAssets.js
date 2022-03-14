@@ -6,7 +6,7 @@ const TableOfAssets = (props) => {
     <>
       <section className="section is-small pb-0">
         <div>
-          <div className="columns is-centered is-vcentered is-mobile is-gapless custom-table-header">
+          <div className="columns is-centered is-vcentered is-mobile is-gapless custom-table-header is-size-7-mobile">
             <div className="column has-text-weight-bold has-text-black has-text-centered-mobile">Asset</div>
             <div className="column has-text-weight-bold has-text-black has-text-centered-mobile is-hidden-mobile">
               Type

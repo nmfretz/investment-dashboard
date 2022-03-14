@@ -30,10 +30,30 @@ const AddAssetModal = (props) => {
     setSearchResults([]);
   }
 
+  function handleOpenSymbolSearch() {
+    setIsSymbolSelectorOpen(!isSymbolSelectorOpen);
+  }
+
+  useEffect(() => {
+    if (!isSymbolSelectorOpen) return;
+
+    const searchInputEl = document.querySelector("[data-search-input]");
+    console.log(searchInputEl);
+    searchInputEl.focus();
+  }, [isSymbolSelectorOpen]);
+
+  function handleSearchListFocus(e) {
+    if (e.target.value === "") return;
+    if (e.keyCode !== 40) return;
+    const searchListEl = document.querySelector("[data-search-list]").firstElementChild;
+    searchListEl.focus();
+  }
+
   function handleSymbolSearch(e) {
     setSymbolSearch(e.target.value);
   }
 
+  // TODO - revisit this useEffect
   useEffect(async () => {
     console.log("symbol search useEffect run");
     if (symbolSearch.length === 0) return setSearchResults([]);
@@ -140,7 +160,7 @@ const AddAssetModal = (props) => {
                 <div className="dropdown-trigger">
                   <button
                     className="button"
-                    onClick={() => setIsSymbolSelectorOpen(!isSymbolSelectorOpen)}
+                    onClick={() => handleOpenSymbolSearch()}
                     aria-haspopup="true"
                     aria-controls="dropdown-menu"
                   >
@@ -155,18 +175,20 @@ const AddAssetModal = (props) => {
                     <div className="field dropdown-item">
                       <div className="control has-icons-left">
                         <input
+                          className="input is-transparent"
                           type="text"
                           placeholder="search tickers..."
-                          className="input is-transparent"
                           value={symbolSearch}
                           onChange={handleSymbolSearch}
+                          onKeyDown={handleSearchListFocus}
+                          data-search-input
                         />
                         <span className="icon is-left">
                           <FontAwesomeIcon className="fa" icon={faSearch} />
                         </span>
                       </div>
                     </div>
-                    <div className="custom-search-results">
+                    <div className="custom-search-results" data-search-list>
                       {searchResults.length > 0 ? (
                         searchResults.map((searchResult) => {
                           return (

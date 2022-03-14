@@ -44,7 +44,7 @@ const Assets = (props) => {
         <div key={asset.id}>
           <div
             onClick={() => handleInfoClick(asset)}
-            className="columns is-mobile is-centered is-vcentered is-gapless custom-info-selector"
+            className="columns is-mobile is-centered is-vcentered is-gapless custom-info-selector is-size-7-mobile"
           >
             <div className="column has-text-centered-mobile has-text-weight-bold has-text-black">{asset.symbol}</div>
             <div className="column has-text-centered-mobile is-hidden-mobile">{asset.type}</div>
@@ -65,10 +65,10 @@ const Assets = (props) => {
             <div className="column has-text-centered-mobile">{numberFormatter(asset.amount)}</div>
             {/* <div className="column has-text-centered-mobile">{asset.amount}</div> */}
 
-            <div className="column has-text-centered-mobile">
+            <div className="column has-text-centered-mobile ">
               {
                 <RefreshLoadSpinner
-                  className={`button custom-not-a-button custom-table-loadspinner ${
+                  className={`button custom-not-a-button custom-table-loadspinner is-size-7-mobile ${
                     isGraphAndTableLoading ? "is-loading" : ""
                   }`}
                   text={`${Intl.NumberFormat("en-CA", {

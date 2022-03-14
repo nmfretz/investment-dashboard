@@ -1,16 +1,26 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+
 const CurrencySelector = (props) => {
-  const { userCurrency, handleCurrencyChange, isLoadingForCurrency } = props;
+  const { setIsWelcomeModalOpen, userCurrency, handleCurrencyChange, isLoadingForCurrency } = props;
 
   return (
     <>
-      <section className="section pt-3 pr-5">
-        <div className="field has-addons is-pulled-right">
+      <section className="section is-flex is-justify-content-space-between is-align-items-center pt-3 pb-0">
+        <div>
+          <span className="icon-text custom-info-button" onClick={() => setIsWelcomeModalOpen(true)}>
+            <span className="icon custom-navbar-icon is-medium">
+              <FontAwesomeIcon className="fas fa-lg fa-solid" icon={faInfoCircle} />
+            </span>
+          </span>
+        </div>
+        <div className="field has-addons">
           <div className="control">
             <a className={`button is-static ${isLoadingForCurrency ? "is-loading" : ""}`}>Currency</a>
           </div>
           <div className="control">
             <div className="select">
-              <select value={userCurrency} onChange={handleCurrencyChange}>
+              <select className="custom-currency-selector" value={userCurrency} onChange={handleCurrencyChange}>
                 <option value="AUD">AUD</option>
                 <option value="CAD">CAD</option>
                 <option value="CNY">CNY</option>

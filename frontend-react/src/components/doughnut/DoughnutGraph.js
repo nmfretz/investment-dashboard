@@ -1,5 +1,4 @@
 import { Doughnut } from "react-chartjs-2";
-
 import { DATA_COLORS } from "../../lib/graphUtils";
 
 const DoughnutGraph = ({ assets, userCurrency }) => {
