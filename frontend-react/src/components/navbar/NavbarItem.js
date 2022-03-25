@@ -1,6 +1,6 @@
-const NavbarItem = ({ href, innerText }) => {
+const NavbarItem = ({ href, innerText, handleClose }) => {
   return (
-    <a className="navbar-item" href={href} target="_blank" rel="noreferrer">
+    <a className="navbar-item" href={href} target="_blank" rel="noreferrer" onClick={handleClose}>
       {innerText}
     </a>
   );
