@@ -1,7 +1,8 @@
 import { Doughnut } from "react-chartjs-2";
 import { DATA_COLORS } from "../../lib/graphUtils";
+import RefreshLoadSpinner from "../RefreshLoadSpinner";
 
-const DoughnutGraph = ({ assets, userCurrency }) => {
+const DoughnutGraph = ({ assets, userCurrency, isGraphTableLoading }) => {
   const sumOfAllAssetValues = assets.reduce((total, asset) => {
     return total + asset.userCurrencyValue;
   }, 0);
@@ -137,8 +138,11 @@ const DoughnutGraph = ({ assets, userCurrency }) => {
   const plugins = [centreChartValue, centreChartCurrency];
 
   return (
-    <div>
+    <div className="custom-doughnut-div">
       <Doughnut data={data} options={options} plugins={plugins} width={500} height={500} />
+      {isGraphTableLoading && (
+        <RefreshLoadSpinner className={"button is-loading custom-refresh-loadspinner"} text={""} />
+      )}
     </div>
   );
 };

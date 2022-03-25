@@ -43,16 +43,24 @@
   box-shadow: none;
 }
 
+.custom-doughnut-div {
+  position: relative;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
 .custom-refresh-loadspinner {
-  border: none;
-  border-radius: 100000000px;
-  height: 13rem;
-  width: 13rem;
-  font-size: 4rem;
   position: absolute;
+  top: 50%;
   left: 50%;
-  top: 16.6rem;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
+  border: none;
+  /* border: 1px solid black; */
+  border-radius: 50%;
+  width: 20%;
+  max-width: 150px;
+  max-height: 100px !important;
+  font-size: 4rem;
 }
 
 .custom-table-loadspinner {

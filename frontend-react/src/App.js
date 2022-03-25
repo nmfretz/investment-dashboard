@@ -168,10 +168,10 @@ function App() {
         isLoadingForCurrency={isLoadingForCurrency}
         handleCurrencyChange={handleCurrencyChange}
       />
-      {isGraphAndTableLoading && (
+      {/* {isGraphAndTableLoading && (
         <RefreshLoadSpinner className={"button is-loading custom-refresh-loadspinner"} text={""} />
-      )}
-      <DoughnutGraph assets={assets} userCurrency={userCurrency} />
+      )} */}
+      <DoughnutGraph assets={assets} userCurrency={userCurrency} isGraphAndTableLoading={isGraphAndTableLoading} />
       <RefreshPricesBtn handleRefreshPrices={handleRefreshPrices} isGraphAndTableLoading={isGraphAndTableLoading} />
       <Instructions />
       <TableOfAssets
