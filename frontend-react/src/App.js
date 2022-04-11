@@ -1,5 +1,4 @@
 import { useState, useEffect, createContext, useRef } from "react";
-import useHeroku from "react-use-heroku";
 import { v4 as uuidv4 } from "uuid";
 
 import "bulma/css/bulma.css";
@@ -20,14 +19,11 @@ import {
   saveAssetsToLocalStorage,
 } from "./lib/localStorage";
 import RefreshPricesBtn from "./components/RefreshPricesBtn";
-import { HEROKU_WAKE_END_POINT } from "./lib/end-points";
 import WelcomeModal from "./components/WelcomeModal";
 
 export const AssetContext = createContext();
 
 function App() {
-  const isHerokuLoading = useHeroku({ HEROKU_WAKE_END_POINT });
-
   const [isWelcomeModalOpen, setIsWelcomeModalOpen] = useState(false);
 
   const [assets, setAssets] = useState(loadAssetsFromLocalStorage() || []);
@@ -146,9 +142,6 @@ function App() {
       isMountedHTMLClipped.current = true;
     }
   }, [isAddAssetModalOpen]);
-
-  // TODO - refactor to component with a load spinner
-  if (isHerokuLoading) return <div>Heroku backend server is sleeping, hang tight...</div>;
 
   return (
     <AssetContext.Provider
