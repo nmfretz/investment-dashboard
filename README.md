@@ -45,20 +45,19 @@ Front end currently deployed on netlify at https://investment-dashboard.netlify.
 #### Frontend
 
 - [ ] Remove cache items that no longer exist in portfolio
-- [ ] Clean up console logs
 - [ ] Add summary to AssetInfo.js that includes: uncompacted stock price, amount, value, portfolio percent
-- [ ] CSS:
-  - [ ] Size and padding of doughnut chart
-  - [ ] White space
-- [ ] Add proper error handling for all get requests.
-- [ ] Doughnut chart:
-  - [ ] Colour scheme for graph (plus many more colours)
-  - [ ] Make doughnut chart tooltips more readable
-  - [ ] Don't show tootlip when there is no data
+- [x] CSS:
+  - [x] Size and padding of doughnut chart
+  - [x] White space
+- [x] Add proper error handling for all get requests.
+- [x] Doughnut chart:
+  - [x] Colour scheme for graph
+  - [x] Make doughnut chart tooltips more readable
+  - [x] Don't show tootlip when there is no data
 - [ ] Properly handle scenario where user quickly clicks on multiple assets which issues multiple requests to backend
 - [ ] Consider auto-refreshing prices every 5 min instead of on button-click
-- [ ] Consider organizing components into subfolders
-- [ ] Resolve react warnings in console
+- [x] Consider organizing components into subfolders
+- [x] Resolve react warnings in console
 - [ ] Add database instead of persisting assets in local storage
 
 #### Backend
