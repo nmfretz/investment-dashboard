@@ -49,23 +49,19 @@ const AddAssetModal = (props) => {
     searchListEl.focus();
   }
 
-  function handleSymbolSearch(e) {
-    setSymbolSearch(e.target.value);
-  }
+  async function handleSymbolSearch(e) {
+    const symbol = e.target.value;
+    setSymbolSearch(symbol);
 
-  // TODO - revisit this useEffect
-  useEffect(async () => {
-    // console.log("symbol search useEffect run");
-    if (symbolSearch.length === 0) return setSearchResults([]);
-
+    if (symbol.length === 0) return setSearchResults([]);
     let tempSearchResults;
     if (type === "Stock") {
-      tempSearchResults = await searchAvailableStocks(symbolSearch);
+      tempSearchResults = await searchAvailableStocks(symbol);
     } else {
-      tempSearchResults = await searchAvailableCrypto(symbolSearch);
+      tempSearchResults = await searchAvailableCrypto(symbol);
     }
     setSearchResults(tempSearchResults);
-  }, [symbolSearch]);
+  }
 
   function handleSymbolChange(symbol) {
     setSymbol(symbol);
@@ -179,7 +175,7 @@ const AddAssetModal = (props) => {
                           type="text"
                           placeholder="search tickers..."
                           value={symbolSearch}
-                          onChange={handleSymbolSearch}
+                          onChange={async (e) => await handleSymbolSearch(e)}
                           onKeyDown={handleSearchListFocus}
                           data-search-input
                         />
@@ -202,7 +198,7 @@ const AddAssetModal = (props) => {
                       ) : symbolSearch === "" ? (
                         ""
                       ) : (
-                        <a className="dropdown-item">{`No results found for "${symbolSearch}""`}</a>
+                        <button className="dropdown-item custom-search-suggestion-item-button">{`No results found for "${symbolSearch}""`}</button>
                       )}
                     </div>
                   </div>

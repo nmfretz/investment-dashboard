@@ -2,10 +2,8 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
-import doughnut1 from "../img/doughnut-1.png";
-import doughnut2 from "../img/doughnut-2.png";
-import table from "../img/table.png";
-import tableExpanded from "../img/table-expanded.png";
+import doughnut from "../img/doughnut-2.png";
+import table from "../img/table-expanded.png";
 import financials from "../img/financials.png";
 import priceHistory from "../img/price-history.png";
 
@@ -30,7 +28,7 @@ const WelcomeModal = ({ isOpen, handleClose }) => {
               Your portfolio is displayed as a doughnut chart, and is viewable in different currencies.
             </p>
             <figure className="image custom-welcome-img mb-5">
-              <img className="custom-img-border" src={doughnut2} />
+              <img className="custom-img-border" src={doughnut} alt="example doughnut chart" />
             </figure>
             <p className="mb-3">
               <span>
@@ -47,7 +45,7 @@ const WelcomeModal = ({ isOpen, handleClose }) => {
               <img src={table} />
             </figure> */}
             <figure className="image custom-welcome-img mb-5">
-              <img className="custom-img-border" src={tableExpanded} />
+              <img className="custom-img-border" src={table} alt="example table of assets" />
             </figure>
             <p className="mb-3">
               Clicking on an asset in the table expands an info-view that includes charts of company financials and
@@ -55,34 +53,34 @@ const WelcomeModal = ({ isOpen, handleClose }) => {
             </p>
 
             <figure className="image custom-welcome-img mb-5">
-              <img className="custom-img-border" src={financials} />
+              <img className="custom-img-border" src={financials} alt="example chart of company financials" />
             </figure>
             <p className="mb-3">
               You can select the time range over which to view the charts. Change between available financial charts by
               selecting the dropdown menu.
             </p>
             <figure className="image custom-welcome-img mb-5">
-              <img className="custom-img-border" src={priceHistory} />
+              <img className="custom-img-border" src={priceHistory} alt="example chart of company price-history" />
             </figure>
             <p className="mb-3">
               Data for this app is queried from{" "}
-              <a href="https://hypercharts.co/" target="_blank">
+              <a href="https://hypercharts.co/" target="_blank" rel="noreferrer">
                 HyperCharts
               </a>
               ,{" "}
-              <a href="https://www.alphavantage.co/" target="_blank">
+              <a href="https://www.alphavantage.co/" target="_blank" rel="noreferrer">
                 Alpha Vantage
               </a>
               ,{" "}
-              <a href="https://www.yahoofinanceapi.com/" target="_blank">
+              <a href="https://www.yahoofinanceapi.com/" target="_blank" rel="noreferrer">
                 Yahoo Finance
               </a>
               ,{" "}
-              <a href="https://docs.coincap.io/" target="_blank">
+              <a href="https://docs.coincap.io/" target="_blank" rel="noreferrer">
                 Coin Cap
               </a>
               , and{" "}
-              <a href="https://nomics.com/docs/" target="_blank">
+              <a href="https://nomics.com/docs/" target="_blank" rel="noreferrer">
                 Nomics
               </a>{" "}
               APIs.

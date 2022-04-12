@@ -1,4 +1,4 @@
-const PRODUCTION = false;
+const PRODUCTION = true;
 
 export let SERVER_URL;
 

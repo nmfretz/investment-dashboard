@@ -16,7 +16,7 @@ const CurrencySelector = (props) => {
         </div>
         <div className="field has-addons">
           <div className="control">
-            <a className={`button is-static ${isLoadingForCurrency ? "is-loading" : ""}`}>Currency</a>
+            <button className={`button is-static ${isLoadingForCurrency ? "is-loading" : ""}`}>Currency</button>
           </div>
           <div className="control">
             <div className="select">

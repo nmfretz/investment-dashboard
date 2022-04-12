@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "chartjs-adapter-date-fns";
 import { Line } from "react-chartjs-2";
 
@@ -8,54 +8,50 @@ import getHistoricalCryptoPrices from "../../../lib/getHistoricalCryptoPrices";
 
 const HistoricalPriceGraph = ({ asset, minDate, setIsLoadingPriceGraph }) => {
   const [historicalPrices, setHistoricalPrices] = useState({ dates: [], prices: [] });
-  const isMountedForMinDate = useRef(true); // object
-  const isMountedForMinX = useRef(true); // object
-
-  const [minX, setMinX] = useState();
+  const [minX, setMinX] = useState(null);
   const [lineColor, setLineColor] = useState();
 
-  useEffect(async () => {
-    let fetchedData;
-    if (asset.type === "Stock") {
-      // console.log("fetching historical stock price data");
-      fetchedData = await getHistoricalStockPrices(asset.symbol);
-      setIsLoadingPriceGraph(false);
-    } else {
-      // console.log("fetching historical crypto price data");
-      // fetchedData = { dates: ["2019-01-01", "2020-01-01"], prices: [5, 10] };
-      fetchedData = await getHistoricalCryptoPrices(asset.symbol);
-      // console.log(fetchedData);
-      setIsLoadingPriceGraph(false);
-    }
-    setHistoricalPrices(fetchedData);
-  }, []);
-
   useEffect(() => {
-    // do not run when first mounted to avoid infinite loop when passing empty historicalPrices.dates to setStartDate
-    if (!isMountedForMinDate.current) {
-      setMinX(findNearestStartDate(minDate, historicalPrices.dates));
-    } else {
-      // minX undefined and full dataset plotted
-      isMountedForMinDate.current = false;
-    }
-  }, [minDate]);
-
-  useEffect(() => {
-    if (!isMountedForMinX.current) {
-      const indexOfMinDate = historicalPrices.dates.indexOf(minX);
-      const startPrice = Number(historicalPrices.prices[indexOfMinDate]);
-      const endPrice = Number(historicalPrices.prices[historicalPrices.prices.length - 1]);
-      if (startPrice > endPrice) {
-        setLineColor(DATA_COLORS.red);
-        // console.log("set line to red");
+    // on initial graph load
+    async function fetchData() {
+      let fetchedData;
+      if (asset.type === "Stock") {
+        // console.log("fetching historical stock price data");
+        fetchedData = await getHistoricalStockPrices(asset.symbol);
+        setIsLoadingPriceGraph(false);
       } else {
-        setLineColor(DATA_COLORS.green);
-        // console.log("set line to green");
+        // console.log("fetching historical crypto price data");
+        // fetchedData = { dates: ["2019-01-01", "2020-01-01"], prices: [5, 10] };
+        fetchedData = await getHistoricalCryptoPrices(asset.symbol);
+        // console.log(fetchedData);
+        setIsLoadingPriceGraph(false);
       }
-    } else {
-      isMountedForMinX.current = false;
+      setHistoricalPrices(fetchedData);
     }
-  }, [minX]);
+    fetchData();
+  }, [asset.type, asset.symbol, setIsLoadingPriceGraph]);
+
+  // calc minX
+  useEffect(() => {
+    if (!minDate) return;
+    setMinX(findNearestStartDate(minDate, historicalPrices.dates));
+  }, [minDate, historicalPrices]);
+
+  // TODO - can all this be placed below in data block instead of a useEffect?
+  // calc lineColor
+  useEffect(() => {
+    if (!minX) return;
+    const indexOfMinDate = historicalPrices.dates.indexOf(minX);
+    const startPrice = Number(historicalPrices.prices[indexOfMinDate]);
+    const endPrice = Number(historicalPrices.prices[historicalPrices.prices.length - 1]);
+    if (startPrice > endPrice) {
+      setLineColor(DATA_COLORS.red);
+      // console.log("set line to red");
+    } else {
+      setLineColor(DATA_COLORS.green);
+      // console.log("set line to green");
+    }
+  }, [minX, historicalPrices]);
 
   // data block
   const data = {

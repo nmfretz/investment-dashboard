@@ -49,7 +49,7 @@ export function findNearestStartDate(startDate, dates) {
       minDate = format(sub(parseISO(startDate), { days: i }), "yyyy-MM-dd");
       i++;
     }
-    minDate = minDate;
+    // minDate = minDate;
     // console.log(`found market day ${i - 1} days earlier on ${minDate}`);
   } else {
     minDate = startDate;

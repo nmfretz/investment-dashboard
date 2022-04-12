@@ -6,19 +6,24 @@ import getCompanyFinancials from "../../../lib/getCompanyFinancials";
 
 const CompanyFinancialsGraph = (props) => {
   const { asset, selectedChart, years, setChartDropdownItems, setIsLoadingFinancialsGraph, setChartTitle } = props;
+  // const [companyFinancials, setCompanyFinancials] = useState({});
   const [companyFinancials, setCompanyFinancials] = useState({});
+
   const [chartType, setChartType] = useState("");
   const [selectedChartConfig, setSelectedChartConfig] = useState({});
   const [dates, setDates] = useState([]);
   const [datasets, setDatasets] = useState([]);
   const isMountedForCompanyFinancials = useRef(true); // object
 
-  useEffect(async () => {
-    const fetchedData = await getCompanyFinancials(asset.symbol);
-    // console.log(fetchedData);
-    setCompanyFinancials(fetchedData);
-    setIsLoadingFinancialsGraph(false);
-  }, []);
+  useEffect(() => {
+    // on initial graph load
+    async function fetchData() {
+      const fetchedData = await getCompanyFinancials(asset.symbol);
+      setCompanyFinancials(fetchedData);
+      setIsLoadingFinancialsGraph(false);
+    }
+    fetchData();
+  }, [asset.symbol, setIsLoadingFinancialsGraph]);
 
   useEffect(() => {
     if (!isMountedForCompanyFinancials.current) {
@@ -54,7 +59,7 @@ const CompanyFinancialsGraph = (props) => {
     } else {
       isMountedForCompanyFinancials.current = false;
     }
-  }, [companyFinancials, selectedChart]);
+  }, [companyFinancials, selectedChart, setChartDropdownItems, setChartTitle]);
 
   // data block
   const data = {

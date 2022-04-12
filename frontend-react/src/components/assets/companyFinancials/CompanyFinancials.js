@@ -6,9 +6,10 @@ import TimeSelectorBreadCrumb from "../TimeSelectorBreadCrumb.js";
 import CompanyFinancialsGraph from "./CompanyFinancialsGraph.js";
 import FinancialsDropdownItems from "./FinancialsDropdownItems.js";
 
+const financialsTimeSelectionCrumbs = ["1Y", "2Y", "5Y", "10Y", "All"];
+const crumbInteger = [1, 2, 3, 5, 10, undefined];
+
 const CompanyFinancials = ({ asset }) => {
-  const [financialsTimeSelectionCrumbs, setFinancialsTimeSelectionCrumbs] = useState(["1Y", "2Y", "5Y", "10Y", "All"]);
-  const [crumbInteger, setCrumbInteger] = useState([1, 2, 3, 5, 10, undefined]);
   const [selectedFinancialsCrumbIndex, setSelectedFinancialsCrumbIndex] = useState(
     financialsTimeSelectionCrumbs.length - 4
   ); // initialized to '2Y' on mount
@@ -51,7 +52,7 @@ const CompanyFinancials = ({ asset }) => {
         </button>
         <span className="is-italic is-size-7">
           source data:{" "}
-          <a href="https://hypercharts.co/" target="_blank">
+          <a href="https://hypercharts.co/" target="_blank" rel="noreferrer">
             HyperCharts
           </a>
         </span>

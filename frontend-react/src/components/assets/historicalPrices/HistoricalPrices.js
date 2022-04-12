@@ -4,19 +4,10 @@ import { format, sub } from "date-fns";
 import HistoricalPriceGraph from "./HistoricalPriceGraph";
 import TimeSelectorBreadCrumb from "../TimeSelectorBreadCrumb.js";
 
+const priceTimeSelectionCrumbs = ["1W", "1M", "3M", "6M", "1Y", "2Y", "5Y", "10Y", "All"];
+
 const HistoricalPrices = ({ asset }) => {
   const [minDate, setMinDate] = useState();
-  const [priceTimeSelectionCrumbs, setPriceTimeSelectionCrumbs] = useState([
-    "1W",
-    "1M",
-    "3M",
-    "6M",
-    "1Y",
-    "2Y",
-    "5Y",
-    "10Y",
-    "All",
-  ]);
   const [selectedPriceCrumbIndex, setSelectedPriceCrumbIndex] = useState(priceTimeSelectionCrumbs.length - 1); // initialized to 'All' on mount
 
   const isMountedForSelectedCrumbIndex = useRef(true);
@@ -66,6 +57,7 @@ const HistoricalPrices = ({ asset }) => {
 
         break;
     }
+    // Instead... just call
     setMinDate(selectedDate);
   }
 
@@ -83,7 +75,7 @@ const HistoricalPrices = ({ asset }) => {
         </button>
         <span className="is-italic is-size-7">
           source data:{" "}
-          <a href="https://www.alphavantage.co/" target="_blank">
+          <a href="https://www.alphavantage.co/" target="_blank" rel="noreferrer">
             Alpha Vantage
           </a>
         </span>

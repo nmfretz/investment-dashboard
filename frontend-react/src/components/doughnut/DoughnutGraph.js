@@ -2,7 +2,7 @@ import { Doughnut } from "react-chartjs-2";
 import { DATA_COLORS } from "../../lib/graphUtils";
 import RefreshLoadSpinner from "../RefreshLoadSpinner";
 
-const DoughnutGraph = ({ assets, userCurrency, isGraphTableLoading }) => {
+const DoughnutGraph = ({ assets, userCurrency, isGraphAndTableLoading }) => {
   const sumOfAllAssetValues = assets.reduce((total, asset) => {
     return total + asset.userCurrencyValue;
   }, 0);
@@ -29,7 +29,7 @@ const DoughnutGraph = ({ assets, userCurrency, isGraphTableLoading }) => {
     beforeDraw(chart, args, options) {
       const {
         ctx,
-        chartArea: { top, right, bottom, left, width, height },
+        chartArea: { width, height },
       } = chart;
       ctx.save();
       ctx.font = options.fontSize + "px " + options.fontFamily;
@@ -57,7 +57,7 @@ const DoughnutGraph = ({ assets, userCurrency, isGraphTableLoading }) => {
     beforeDraw(chart, args, options) {
       const {
         ctx,
-        chartArea: { top, right, bottom, left, width, height },
+        chartArea: { width, height },
       } = chart;
       ctx.save();
       ctx.font = options.fontSize + "px " + options.fontFamily;
@@ -140,7 +140,7 @@ const DoughnutGraph = ({ assets, userCurrency, isGraphTableLoading }) => {
   return (
     <div className="custom-doughnut-div">
       <Doughnut data={data} options={options} plugins={plugins} width={500} height={500} />
-      {isGraphTableLoading && (
+      {isGraphAndTableLoading && (
         <RefreshLoadSpinner className={"button is-loading custom-refresh-loadspinner"} text={""} />
       )}
     </div>

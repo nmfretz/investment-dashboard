@@ -18,7 +18,6 @@ const CACHE_TIMEOUT = 1 * MINUTES_TO_MILLISECONDS; // every 5 minutes?
 const priceCacheStocks = JSON.parse(localStorage.getItem(LOCAL_STORAGE_STOCK_PRICE_CACHE)) || {};
 const priceCacheCrypto = JSON.parse(localStorage.getItem(LOCAL_STORAGE_CRYPTO_PRICE_CACHE)) || {};
 const exchangeRateCache = JSON.parse(localStorage.getItem(LOCAL_STORAGE_EXCHANGE_RATE_CACHE)) || {};
-let lastNomicsApiCall = Date.now(); // restricted to 1 API call per second
 
 export default async function updatePricesValuesPercents(assets, userCurrency) {
   // for-of loop used instead of forEach to allow async calls inside a loop.
