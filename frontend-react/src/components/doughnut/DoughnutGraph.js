@@ -1,6 +1,6 @@
 import { Doughnut } from "react-chartjs-2";
-import { DATA_COLORS } from "../../lib/graphUtils";
-import RefreshLoadSpinner from "../RefreshLoadSpinner";
+import { DATA_COLORS } from "../../utils/graphColors";
+import RefreshLoadSpinner from "../ui/RefreshLoadSpinner";
 
 const DoughnutGraph = ({ assets, userCurrency, isGraphAndTableLoading }) => {
   const sumOfAllAssetValues = assets.reduce((total, asset) => {

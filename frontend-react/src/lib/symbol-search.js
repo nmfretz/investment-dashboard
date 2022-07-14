@@ -1,4 +1,4 @@
-import { SERVER_URL, STOCK_SEARCH_END_POINT, CRYPTO_SEARCH_END_POINT } from "./end-points";
+import { SERVER_URL, STOCK_SEARCH_END_POINT, CRYPTO_SEARCH_END_POINT } from "../data/end-points";
 
 export async function searchAvailableStocks(searchInput) {
   const response = await fetch(`${SERVER_URL}${STOCK_SEARCH_END_POINT}/${searchInput}`);

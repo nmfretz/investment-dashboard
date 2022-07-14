@@ -1,5 +1,5 @@
 //do this without cache at first
-import { SERVER_URL, HISTORICAL_STOCK_PRICE_END_POINT } from "./end-points";
+import { SERVER_URL, HISTORICAL_STOCK_PRICE_END_POINT } from "../data/end-points";
 import { format, sub, parseISO } from "date-fns";
 import { LS_HISTORICAL_STOCK_PRICE_CACHE } from "./localStorage";
 

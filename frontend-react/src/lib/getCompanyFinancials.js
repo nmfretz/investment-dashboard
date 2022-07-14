@@ -1,4 +1,4 @@
-import { SERVER_URL, COMPANY_FINANCIALS_END_POINT } from "./end-points";
+import { SERVER_URL, COMPANY_FINANCIALS_END_POINT } from "../data/end-points";
 import { LS_COMPANY_FINANCIALS_CACHE } from "./localStorage";
 
 const MINUTES_TO_MILLISECONDS = 60000; // consider placing these constants in their own js file

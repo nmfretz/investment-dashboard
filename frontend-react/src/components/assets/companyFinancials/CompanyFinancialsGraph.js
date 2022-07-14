@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Bar, Line } from "react-chartjs-2";
 
-import { DATA_COLORS, DATA_COLORS_TRANSPARENT } from "../../../lib/graphUtils";
+import { DATA_COLORS, DATA_COLORS_TRANSPARENT } from "../../../utils/graphColors";
 import getCompanyFinancials from "../../../lib/getCompanyFinancials";
 
 const CompanyFinancialsGraph = (props) => {

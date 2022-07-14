@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "chartjs-adapter-date-fns";
 import { Line } from "react-chartjs-2";
 
-import { DATA_COLORS } from "../../../lib/graphUtils";
+import { DATA_COLORS } from "../../../utils/graphColors";
 import { getHistoricalStockPrices, findNearestStartDate } from "../../../lib/getHistoricalStockPrices";
 import getHistoricalCryptoPrices from "../../../lib/getHistoricalCryptoPrices";
 

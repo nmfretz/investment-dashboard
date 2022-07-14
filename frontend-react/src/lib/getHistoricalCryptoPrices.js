@@ -1,5 +1,5 @@
 // TODO - add try catch for error handling
-import { SERVER_URL, HISTORICAL_CRYPTO_PRICE_END_POINT } from "./end-points";
+import { SERVER_URL, HISTORICAL_CRYPTO_PRICE_END_POINT } from "../data/end-points";
 import { LS_HISTORICAL_CRYPTO_PRICE_CACHE } from "./localStorage";
 
 const MINUTES_TO_MILLISECONDS = 60000; // consider placing these constants in their own js file

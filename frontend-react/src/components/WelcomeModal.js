@@ -2,10 +2,10 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
-import doughnut from "../img/doughnut-2.png";
-import table from "../img/table-expanded.png";
-import financials from "../img/financials.png";
-import priceHistory from "../img/price-history.png";
+import doughnut from "../assets/img/doughnut-2.png";
+import table from "../assets/img/table-expanded.png";
+import financials from "../assets/img/financials.png";
+import priceHistory from "../assets/img/price-history.png";
 
 const WelcomeModal = ({ isOpen, handleClose }) => {
   return (

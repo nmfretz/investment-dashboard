@@ -3,7 +3,7 @@ import {
   CURRENT_STOCK_PRICE_END_POINT,
   CURRENT_CRYPTO_PRICE_END_POINT,
   CURRENCY_CONVERSION_END_POINT,
-} from "./end-points";
+} from "../data/end-points";
 
 import {
   LOCAL_STORAGE_STOCK_PRICE_CACHE,

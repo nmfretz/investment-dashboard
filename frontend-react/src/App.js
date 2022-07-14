@@ -2,7 +2,7 @@ import { useState, useEffect, createContext, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import "bulma/css/bulma.css";
-import "./App.css";
+import "./assets/App.css";
 import DoughnutGraph from "./components/doughnut/DoughnutGraph";
 import Navbar from "./components/navbar/Navbar";
 import TableOfAssets from "./components/assets/TableOfAssets";
