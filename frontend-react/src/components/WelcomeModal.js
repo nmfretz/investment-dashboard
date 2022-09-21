@@ -52,6 +52,10 @@ const WelcomeModal = ({ isOpen, handleClose }) => {
               price history.
             </p>
 
+            <p className="mb-3 has-text-danger">
+              NOTE: HyperCharts was recently sold to public.com and the API has been discontinued. I am currently
+              looking for a new API to query company financials.
+            </p>
             <figure className="image custom-welcome-img mb-5">
               <img className="custom-img-border" src={financials} alt="example chart of company financials" />
             </figure>

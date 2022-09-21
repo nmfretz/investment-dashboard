@@ -144,6 +144,15 @@
   border: none;
 }
 
+.custom-hypercharts-icon {
+  color: #888;
+  cursor: pointer;
+}
+
+.custom-hypercharts-icon:hover {
+  color: #aaa;
+}
+
 .custom-no-hover {
   cursor: default;
   outline: none;

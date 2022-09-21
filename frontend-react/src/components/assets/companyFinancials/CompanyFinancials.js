@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDown, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 import TimeSelectorBreadCrumb from "../TimeSelectorBreadCrumb.js";
 import CompanyFinancialsGraph from "./CompanyFinancialsGraph.js";
 import FinancialsDropdownItems from "./FinancialsDropdownItems.js";
+import HyperChartsMessage from "../../HyperChartsMessage.js";
 
 const financialsTimeSelectionCrumbs = ["1Y", "2Y", "5Y", "10Y", "All"];
 const crumbInteger = [1, 2, 3, 5, 10, undefined];
@@ -23,6 +24,8 @@ const CompanyFinancials = ({ asset }) => {
 
   const [isLoadingFinancialsGraph, setIsLoadingFinancialsGraph] = useState(true);
   const [chartTitle, setChartTitle] = useState("Company Financials");
+
+  const [isHyperChartsInfoOpen, setIsHyperChartsInfoOpen] = useState(false);
 
   useEffect(() => {
     if (!isMountedForSelectedFinancialsCrumbIndex.current) {
@@ -48,8 +51,12 @@ const CompanyFinancials = ({ asset }) => {
           aria-haspopup="true"
           aria-controls="dropdown-menu"
         >
-          <span className="">{chartTitle}</span>
+          <span>{chartTitle}</span>
+          <span className="icon is-small custom-hypercharts-icon" onClick={() => setIsHyperChartsInfoOpen(true)}>
+            <FontAwesomeIcon className="fas fa-solid" icon={faInfoCircle} />
+          </span>
         </button>
+        <HyperChartsMessage isOpen={isHyperChartsInfoOpen} handleClose={() => setIsHyperChartsInfoOpen(false)} />
         <span className="is-italic is-size-7">
           source data:{" "}
           <a href="https://hypercharts.co/" target="_blank" rel="noreferrer">
