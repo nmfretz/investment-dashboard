@@ -14,9 +14,12 @@ router.get("/:symbol", async (req, res) => {
   console.log(getFinancialsParams);
 
   try {
-    const response = await axios.get(`${BASE_URL}${FINANCIALS_ENDPOINT}${getFinancialsParams}`);
-    const { data } = await response;
-    res.json(data);
+    // const response = await axios.get(`${BASE_URL}${FINANCIALS_ENDPOINT}${getFinancialsParams}`);
+    // const { data } = await response;
+    // res.json(data);
+
+    // hypercharts sold to public. no more api access.
+    res.json({});
   } catch (error) {
     console.error(error);
     res.json({});
