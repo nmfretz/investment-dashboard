@@ -1,10 +1,8 @@
-//do this without cache at first
 import { SERVER_URL, HISTORICAL_STOCK_PRICE_END_POINT } from "../data/end-points";
 import { format, sub, parseISO } from "date-fns";
 import { LS_HISTORICAL_STOCK_PRICE_CACHE } from "./localStorage";
+import { CACHE_TIMEOUT } from "../data/constants";
 
-const MINUTES_TO_MILLISECONDS = 60000; // consider placing these constants in their own js file
-const CACHE_TIMEOUT = 60 * MINUTES_TO_MILLISECONDS; // every 60 minutes. Could do longer since we are just looking daily?
 const historicalPriceCacheStocks = JSON.parse(localStorage.getItem(LS_HISTORICAL_STOCK_PRICE_CACHE)) || {};
 
 export async function getHistoricalStockPrices(symbol) {
